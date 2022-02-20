@@ -1,7 +1,7 @@
 import wave
 
 infiles = ["./audio/j.wav", "./audio/q.wav"]
-outfile = "sounds3.wav"
+outfile = "sounds4.wav"
 
 data= []
 for infile in infiles:
