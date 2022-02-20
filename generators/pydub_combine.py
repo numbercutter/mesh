@@ -3,21 +3,23 @@ import random
 import glob
 
 sounds = glob.glob("./audio/*")
-segments = {}
+#print(sounds)
 segment_list = []
 for i in range(len(sounds)):
-    segments[sounds[i]] = AudioSegment.from_file(sounds[i], format="wav")
+    segment_list.append(AudioSegment.from_file(sounds[i], format="wav"))
 
-print(range(len(segments.values())))
-print(segments.values())
-for i in range(len(segments.values())):
-    combined = segments[0].append(segments[i])
+#print(segment_list)
+for i in range(len(segment_list)):
+    if i == 0:
+        combined = segment_list[0].append(segment_list[i])
+    if i >= 1:
+        combined = combined.append(segment_list[i])
+        print(combined)
+
+file_handle = combined.export("./audio/jam.wav", format="wav")
 # sound1 6 dB louder
 #louder = sound1 + 6
 
-print(combined)
-print(segments.values())
-print(sounds[0])
 # sound1, with sound2 appended (use louder instead of sound1 to append the louder version)
 #combined = sound1 + sound2
 #combined = sound1.append(sound2)
